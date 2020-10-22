@@ -1,7 +1,13 @@
 $(document).ready(function (e) {
 
+	const queryString = window.location.search;
+
+	const urlParams = new URLSearchParams(queryString);
+
+	const idProyecto = urlParams.get("id1");
+
 	$.ajax({
-		url: "../clases/carga.php?idUsuario=0&idProyecto=1",
+		url: "../clases/carga.php?idUsuario=0&idProyecto="+ idProyecto,
 		type: "GET",
 		beforeSend: function () {
 			$("#response").html(

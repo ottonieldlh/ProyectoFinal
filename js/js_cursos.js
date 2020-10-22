@@ -6,7 +6,7 @@ $(document).ready(function (e) {
 
     const idUsuario = urlParams.get('id1');
 
-    console.log(idUsuario);
+
 	$.ajax({
 		url: "../clases/cursos.php?idUsuario="+ idUsuario,
 		type: 'GET',
@@ -27,7 +27,7 @@ $(document).ready(function (e) {
                 $table.append("<tr><th>Curso</th><th>No. de Proyectos</th></tr>")
 				data.forEach(element => {
 					let tr = $("<tr>").append(
-						$('<td>').html("<a href=proyectos.html?id1=1&id2="+element.id+">"+element.Nombre+"</a>"),
+						$('<td>').html("<a href=proyectos.html?id1="+ idUsuario +"&id2="+element.id+">"+element.Nombre+"</a>"),
 						$('<td>').text(element.Proyectos)
 					);
 					$table.append(tr);
