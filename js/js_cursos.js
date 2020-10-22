@@ -8,7 +8,7 @@ $(document).ready(function (e) {
 
     console.log(idUsuario);
 	$.ajax({
-		url: "../clases/cursos.php?idUsuario=0&idProyec"+idUsuario,
+		url: "../clases/cursos.php?idUsuario="+ idUsuario,
 		type: 'GET',
 		beforeSend: function () {
 			$("#response").html(
