@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <header>
+        <h1>cargar proyecto</h1>
+    </header>
+    <meta charset="UTF-8" />
+    <title>Cursos</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap-material-design.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+
+    <form>
+        <div class="form-group">
+            <h2>Entrega de proyecto </h2>
+            <p>
+
+                Sube un archivo:
+
+                <input type="file" class="form-control-file" id="filepicker" name="fileList" webkitdirectory multiple />
+            <ul class="list-group" id="listing"></ul>
+            <h2>Añadir comentarios </h2>
+            <p>comentarios:<br>
+                <textarea class="form-control col-4" name="comentarios" rows="4"
+                    cols="8">Escribe aquí tus comentarios</textarea>
+            </p>
+
+            <input type="reset" value="Borrar" class="btn btn-primary"  onclick="reset();">
+            <input type="submit" value="Enviar datos" class="btn btn-primary" onclick="save();">
+        </div>
+
+        <script src="../js/js_carga.js" type="text/javascript"></script>
+
+</body>
+<footer>
+    <p>
+        copyright &copy; 2020 UMG
+    </p>
+</footer>
+
+</html>

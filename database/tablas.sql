@@ -91,3 +91,16 @@ CREATE TABLE `des`.`carga` (
     REFERENCES `des`.`proyectos` (`idProyectos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
+-- Cambios para carga
+ALTER TABLE `des`.`carga` 
+ADD COLUMN `idUsuario` INT NOT NULL AFTER `idCarga`,
+ADD INDEX `index3` (`idUsuario` ASC) INVISIBLE;
+;
+ALTER TABLE `des`.`carga` 
+ADD CONSTRAINT `fk_idUsuario`
+  FOREIGN KEY (`idUsuario`)
+  REFERENCES `des`.`usuarios` (`idUsuarios`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

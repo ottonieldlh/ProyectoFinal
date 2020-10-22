@@ -5,7 +5,7 @@ $('#btnEntrar').on('click', function () {
 
     $.ajax({
         url: '../clases/login.php?user=' +user+ '&password=' +password ,
-        type: 'POST',
+        type: 'GET',
         beforeSend: function () {
             $('#response').html("<div class=\"spinner-grow text-primary\" role=\"status\">\n" +
                 "  <span class=\"sr-only\">Loading...</span>\n" +
@@ -25,8 +25,6 @@ $('#btnEntrar').on('click', function () {
                 window.location.href = "../form/cursos.html?id1="+message.id;
             
             }
-
-
         },  
         error: function (request, status, error) {
             $('#response').html(request.responseText);

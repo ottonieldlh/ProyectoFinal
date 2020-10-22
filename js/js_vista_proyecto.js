@@ -1,15 +1,8 @@
 $(document).ready(function (e) {
 
-    const queryString = window.location.search;
-    
-    const urlParams = new URLSearchParams(queryString);
-
-    const idUsuario = urlParams.get('id1');
-
-    console.log(idUsuario);
 	$.ajax({
-		url: "../clases/cursos.php?idUsuario=0&idProyec"+idUsuario,
-		type: 'GET',
+		url: "../clases/carga.php?idUsuario=0&idProyecto=1",
+		type: "GET",
 		beforeSend: function () {
 			$("#response").html(
 				'<div class="spinner-grow text-primary" role="status">\n' +
@@ -24,11 +17,14 @@ $(document).ready(function (e) {
 			if (message.msgtype == 1) {
 				const data = message.msgdisplay;
                 let $table = $("<table class='table'></table>");
-                $table.append("<tr><th>Curso</th><th>No. de Proyectos</th></tr>")
+                $table.append("<tr><th>Nombre</th><th>Carnet</th><th>Descripción</th><th>Ubicación</th><th>Fecha</th></tr>")
 				data.forEach(element => {
 					let tr = $("<tr>").append(
-						$('<td>').html("<a href=proyectos.html?id1=1&id2="+element.id+">"+element.Nombre+"</a>"),
-						$('<td>').text(element.Proyectos)
+						$("<td>").text(element.Nombre),
+						$("<td>").text(element.Carnet),
+						$("<td>").text(element.Descripcion),
+						$("<td>").text(element.Ubicacion),
+						$("<td>").text(element.Fecha)
 					);
 					$table.append(tr);
 				});

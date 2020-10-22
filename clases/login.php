@@ -9,26 +9,37 @@
     ];
 
     header('Content-Type: application/json');
+    header('Access-Control-Allow-Methos: GET, POST, PUT, DELETE');
 
-
-    $user = $_REQUEST['user'];
-    $pass = $_REQUEST['password'];
-
-    $sql = "CALL sp_Usuario('$user','$pass');";
     global $db;
 
-    if ($resultdata = $db->query($sql))
-    {
-        foreach($resultdata as $row)
-        {
-            $result["msgtype"] = $row["vEstado"];
-            $result["msgdisplay"] =  $row["vMensaje"];
-            $result["id"] =  $row["vid"];
-        }
-    }else
-    {
-        $arrayMessage["msgdisplay"] = "Error generando la informaci&oacute;n solicitada.";
-        $arrayMessage["error"] = $db->error();
+    switch($_SERVER["REQUEST_METHOD"]){
+        case 'GET': 
+            try{
+                $user = $_REQUEST['user'];
+                $pass = $_REQUEST['password'];
+                $sql = "CALL sp_Usuario('$user','$pass');";
+                
+                if ($resultdata = $db->query($sql))
+                {
+                    foreach($resultdata as $row)
+                    {
+                        $result["msgtype"] = $row["vEstado"];
+                        $result["msgdisplay"] =  $row["vMensaje"];
+                        $result["id"] =  $row["vid"];
+                    }
+                }else
+                {
+                    $result["msgtype"] = false;
+                    $arrayMessage["msgdisplay"] = "Error generando la informaci&oacute;n solicitada.";
+                    $arrayMessage["error"] = $db->error();
+                }
+            }catch(Exception $e){
+                $result["msgtype"] = false;
+                $result["msgdisplay"] = [];
+                $result["error"] = $e->getMessage();
+            }
+        break;
     }
 
     $db->db_disconnect();
