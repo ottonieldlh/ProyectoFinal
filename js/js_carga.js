@@ -4,11 +4,8 @@ document.getElementById("filepicker").addEventListener(
 	function (event) {
 		let output = document.getElementById("listing");
 		files = event.target.files;
-		console.log(files.length);
 		for (let i = 0; i < files.length; i++) {
-			let item = document.createElement("li");
-			item.innerHTML = files[i].webkitRelativePath;
-			output.appendChild(item);
+			$("#listing").append("<li class='list-group-item'>"+files[i].webkitRelativePath +"</li>");
 		}
 	},
 	false
