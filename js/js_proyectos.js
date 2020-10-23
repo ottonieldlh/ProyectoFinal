@@ -48,6 +48,7 @@ $(document).ready(function (e) {
 });
 
 function redirect(user, id) {
+	//Consulta el tipo de usuario para verificar el direccionamiento
 	$.ajax({
 		url: "../clases/usuario.php?idUsuario=" + user,
 		type: "GET",
@@ -84,10 +85,10 @@ function redirect(user, id) {
 								const data = message.msgdisplay;
 								if (data.length > 0) {
 									//Aqui ira a la pagina para ver el proyecto
-									alert("Se mostrara el proyecto");
+									alert("Se mostrara el proyecto");	
 								} else {
 									//aqui ira a la pagina para cargar el proyecto
-									window.location.href = "../form/carga_proyecto.html?id1=" + user;
+									window.location.href = "../form/carga_proyecto.html?id1=" + user +"&id2="+id;
 								}
 							}
 						},

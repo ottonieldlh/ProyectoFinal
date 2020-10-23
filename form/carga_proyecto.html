@@ -22,18 +22,17 @@
 
 <body>
 
-    <form>
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <h2>Entrega de proyecto </h2>
             <p>
-
                 Sube un archivo:
 
-                <input type="file" class="form-control-file" id="filepicker" name="fileList" webkitdirectory multiple />
+                <input type="file" class="form-control-file" id="filepicker" name="fileList[]" webkitdirectory multiple />
             <ul class="list-group" id="listing"></ul>
             <h2>Añadir comentarios </h2>
             <p>comentarios:<br>
-                <textarea class="form-control col-4" name="comentarios" rows="4"
+                <textarea id="description" class="form-control col-4" name="comentarios" rows="4"
                     cols="8">Escribe aquí tus comentarios</textarea>
             </p>
 
@@ -41,8 +40,10 @@
             <input type="submit" value="Enviar datos" class="btn btn-primary" onclick="save();">
         </div>
 
-        <script src="../js/js_carga.js" type="text/javascript"></script>
-
+        
+    </form>
+    <script src="../js/js_carga.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.7/uuid.min.js"></script>
 </body>
 <footer>
     <p>
