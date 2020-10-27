@@ -104,3 +104,12 @@ ADD CONSTRAINT `fk_idUsuario`
   REFERENCES `des`.`usuarios` (`idUsuarios`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+
+
+-- Cambios a detalle carga
+CREATE TABLE `des`.`detallecarga` (
+  `iddetallecarga` INT NOT NULL AUTO_INCREMENT,
+  `idCarga` INT NOT NULL,
+  `detallecarga` TEXT NOT NULL,
+  PRIMARY KEY (`iddetallecarga`));

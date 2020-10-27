@@ -1,4 +1,4 @@
-<?php
+d<?php
     require_once (dirname(__DIR__, 1) . '/clases/load.php');
 
     $result = [
@@ -16,23 +16,16 @@
         case 'GET':
             try{
 
-                $idUsuario = $_REQUEST['idUsuario'];
-                $idProyecto = $_REQUEST['idProyecto'];
+                $idCarga = $_REQUEST['idCarga'];
 
-                $sql = "call sp_Carga(1,$idUsuario,$idProyecto,'','');";
+                $sql = "call sp_DetalleCarga(1,$idCarga,'');";
                 
                 if ($resultdata = $db->query($sql))
                 {
                     foreach($resultdata as $row)
                     {
                         $array = [
-                            "Carga" => $row["idCarga"],
-                            "Proyecto" => $row["idProyecto"],
-                            "Nombre" => $row["Nombre"],
-                            "Carnet" => $row["Carnet"],
-                            "Descripcion" => $row["Descripcion"],
-                            "Ubicacion" => $row["Path"],
-                            "Fecha" => $row["FECHA"]
+                            "detallecarga" => $row["detallecarga"]
                         ];
                         array_push($result["msgdisplay"], $array);
                     }
@@ -43,6 +36,7 @@
                     $result["msgdisplay"] = "Error generando la informaci&oacute;n solicitada.";
                     $result["error"] = $db->error();
                 }
+
             }catch(Exception $e){
                 $result["msgtype"] = false;
                 $result["msgdisplay"] = [];
@@ -53,20 +47,18 @@
         case 'POST':
             try{
 
-                $idUsuario = $_REQUEST['idUsuario'];
-                $idProyecto = $_REQUEST['idProyecto'];
-                $Descripcion = $_REQUEST['Descripcion'];
-                $Path = $_REQUEST['Path'];
+                $idCarga = $_REQUEST['idCarga'];
+                $detallecarga = $_REQUEST['detallecarga'];
 
-                $sql = "call sp_Carga(2,$idUsuario,$idProyecto,'$Descripcion','$Path');";
+                $sql = "call sp_DetalleCarga(2,$idCarga,'$detallecarga');";
                 
                 if ($resultdata = $db->query($sql))
                 {
-                    foreach($resultdata as $row){ 
+                   
                         $result["msgtype"] = true;
-                        $result["msgdisplay"] = $row["id"];
+                        $result["msgdisplay"] = "Dato Almacenado Correctamente";
                         $result["error"] = $db->error();
-                    }
+                    
                    
                 }else
                 {
