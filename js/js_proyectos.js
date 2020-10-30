@@ -85,7 +85,7 @@ function redirect(user, id) {
 								const data = message.msgdisplay;
 								if (data.length > 0) {
 									//Aqui ira a la pagina para ver el proyecto
-									alert("Se mostrara el proyecto");	
+									window.location.href = "../form/cargaVistArbol.html?id1=" + data[0].Carga +"&id2="+ data[0].Ubicacion;
 								} else {
 									//aqui ira a la pagina para cargar el proyecto
 									window.location.href = "../form/carga_proyecto.html?id1=" + user +"&id2="+id;

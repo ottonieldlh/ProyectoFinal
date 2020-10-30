@@ -1,4 +1,4 @@
-d<?php
+<?php
     require_once (dirname(__DIR__, 1) . '/clases/load.php');
 
     $result = [
