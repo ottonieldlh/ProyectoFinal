@@ -5,6 +5,7 @@ $(document).ready(function (e) {
 
 	const idUsuario = urlParams.get("id1");
 	const idCurso = urlParams.get("id2");
+	mosDat(idUsuario);
 
 	$.ajax({
 		url: "../clases/proyectos.php?idUsuario=" + idUsuario + "&idCurso=" + idCurso,
@@ -85,7 +86,7 @@ function redirect(user, id) {
 								const data = message.msgdisplay;
 								if (data.length > 0) {
 									//Aqui ira a la pagina para ver el proyecto
-									window.location.href = "../form/cargaVistArbol.html?id1=" + data[0].Carga +"&id2="+ data[0].Ubicacion;
+									window.location.href = "../form/cargaVistArbol.html?id1=" + data[0].Carga +"&id2="+ data[0].Ubicacion+"&id3="+user;
 								} else {
 									//aqui ira a la pagina para cargar el proyecto
 									window.location.href = "../form/carga_proyecto.html?id1=" + user +"&id2="+id;
@@ -98,7 +99,7 @@ function redirect(user, id) {
 					});
 				} else {
 					//Proceso por profesor
-					window.location.href = "../form/vista_proyecto.html?id1=" + id;
+					window.location.href = "../form/vista_proyecto.html?id1=" + id+"&id2="+user;
 				}
 			}
 		},

@@ -1,14 +1,15 @@
 $(document).ready(function (e) {
-	const queryString = window.location.search;
+    const queryString = window.location.search;
 
-	const urlParams = new URLSearchParams(queryString);
+    const urlParams = new URLSearchParams(queryString);
 
-	const idCarga = urlParams.get("id1");
-	const path = urlParams.get("id2");
+    const idCarga = urlParams.get("id1");
+    const path = urlParams.get("id2");
+    const idUsuario = urlParams.get("id3");
+    mosDat(idUsuario);
 
-	console.log(idCarga);
 
-	$.ajax({
+    $.ajax({
         url: "../clases/detallecarga.php?idCarga=" + idCarga,
         type: "GET",
         success: function (response) {
@@ -38,3 +39,4 @@ $(document).ready(function (e) {
         },
     });
 });
+

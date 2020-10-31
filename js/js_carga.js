@@ -1,4 +1,4 @@
-var files;
+let files;
 document.getElementById("filepicker").addEventListener(
 	"change",
 	function (event) {
@@ -63,7 +63,9 @@ function save() {
 								},
 								success: function (response) {
 									const message = response;
+									console.log(message);
 									if (message.msgtype == 1) {
+
 									}
 								},
 								error: function (request, status, error) {
@@ -80,13 +82,15 @@ function save() {
 				},
 			});
 			alert("Datos enviados correctamente");
-			window.history.go(-2);
+			//window.history.go(-2);
 		} else {
 			alert("No se a seleccionado archivos");
 		}
 	} catch (error) {
 		alert(error);
 	}
+
+	mosDat(idUsuario);
 }
 
 function reset() {
@@ -127,4 +131,41 @@ function uploadFiles(files) {
 	xhr.send(this.data);
 
 	return id;
+}
+
+
+function mosDat(idUsuario) {
+	$.ajax({
+		url: "../clases/usuario.php?idUsuario="+ idUsuario,
+		type: 'GET',
+		beforeSend: function () {
+			$("#response").html(
+				'<div class="spinner-grow text-primary" role="status">\n' +
+				'  <span class="sr-only">Loidading...</span>\n' +
+				"</div>"
+			);
+		},
+		success: function (response) {
+			const message = response;
+			console.log(message);
+
+			if (message.msgtype == 1) {
+				const data = message.msgdisplay;
+
+				let $nav = $("<nav class=\"navbar navbar-light rgba-stylish-light\"></nav>");
+				$nav.append("<a class='navbar-brand'></a>")
+				data.forEach(element => {
+					let h5 = $("<a>").append(
+						$('<a>').html("<h5>"+element.Descripcion+" | "+element.Nombre+"</h5>"),
+					);
+					$nav.append(h5);
+				});
+				$(".table-responsive").append($nav);
+			}
+
+		},
+		error: function (request, status, error) {
+			$("#response").html(request.responseText);
+		},
+	});
 }

@@ -5,6 +5,8 @@ $(document).ready(function (e) {
 	const urlParams = new URLSearchParams(queryString);
 
 	const idProyecto = urlParams.get("id1");
+	const idUsuario = urlParams.get("id2");
+	mosDat(idUsuario);
 
 	$.ajax({
 		url: "../clases/carga.php?idUsuario=0&idProyecto="+ idProyecto,
@@ -29,7 +31,7 @@ $(document).ready(function (e) {
 						$("<td>").text(element.Nombre),
 						$("<td>").text(element.Carnet),
 						$("<td>").text(element.Descripcion),
-						$('<td>').html("<a href=cargaVistArbol.html?id1=" + element.Carga +"&id2="+ element.Ubicacion+">"+element.Ubicacion+"</a>"),
+						$('<td>').html("<a href=cargaVistArbol.html?id1=" + element.Carga +"&id2="+ element.Ubicacion+"&id3="+idUsuario+">"+element.Ubicacion+"</a>"),
 						$("<td>").text(element.Fecha)
 					);
 					$table.append(tr);
