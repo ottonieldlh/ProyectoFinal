@@ -29,10 +29,12 @@ $(document).ready(function (e) {
 						$("<td>").text(element.Nombre),
 						$("<td>").text(element.Carnet),
 						$("<td>").text(element.Descripcion),
-						$("<td>").text(element.Ubicacion),
+						$('<td>').html("<a href=cargaVistArbol.html?id1=" + element.Carga +"&id2="+ element.Ubicacion+">"+element.Ubicacion+"</a>"),
 						$("<td>").text(element.Fecha)
 					);
 					$table.append(tr);
+					document.getElementById("sel1").innerHTML += "<option value='"+element.Ubicacion+"'>"+element.Nombre+"</option>";
+					document.getElementById("sel2").innerHTML += "<option value='"+element.Ubicacion+"'>"+element.Nombre+"</option>";
 				});
 				$(".table-responsive").append($table);
 			}
