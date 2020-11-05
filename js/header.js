@@ -25,7 +25,7 @@ function mosDat(idUsuario) {
 					);
 					$nav.append(h5);
 				});
-				$(".table-responsive").append($nav);
+				$("#header").append($nav);
 			}
 
 		},

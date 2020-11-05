@@ -36,6 +36,7 @@
 		</style>
 	</head>
 	<body>
+		<div id="header"></div>
 		<form method="post" enctype="multipart/form-data">
 			<div class="form-group">
 				<nav class="navbar navbar-light">
@@ -48,7 +49,16 @@
 
 		<form class="margenIzq">
 
-			<p><h5>Sube un archivo:</h5></p>
+			<p><h5>Sube un archivo:</h5>
+				<input
+				type="file"
+				class="form-control-file"
+				id="filepicker"
+				name="fileList[]"
+				webkitdirectory
+				multiple
+				/>
+			</p>
 
 			<a data-toggle="collapse" href="#collapse1">Archivos a subir</a>
 

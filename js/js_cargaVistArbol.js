@@ -15,7 +15,6 @@ $(document).ready(function (e) {
         success: function (response) {
             const message = response;
 
-            console.log(message);
             if (message.msgtype == 1) {
                 const data = message.msgdisplay;
 

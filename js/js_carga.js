@@ -1,3 +1,12 @@
+$(document).ready(function (e) {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const idUsuario = urlParams.get("id1");
+	const idProyecto = urlParams.get("id2");
+	const Descripcion = document.getElementById("description").value;
+	mosDat(idUsuario);
+});
+
 let files;
 document.getElementById("filepicker").addEventListener(
 	"change",
@@ -17,11 +26,7 @@ function save() {
 	try {
 		if (files.length > 0) {
 			let id = uploadFiles(files);
-			const queryString = window.location.search;
-			const urlParams = new URLSearchParams(queryString);
-			const idUsuario = urlParams.get("id1");
-			const idProyecto = urlParams.get("id2");
-			const Descripcion = document.getElementById("description").value;
+			v;
 			const Path = id;
 
 			$.ajax({
@@ -65,7 +70,6 @@ function save() {
 									const message = response;
 									console.log(message);
 									if (message.msgtype == 1) {
-
 									}
 								},
 								error: function (request, status, error) {
@@ -82,15 +86,13 @@ function save() {
 				},
 			});
 			alert("Datos enviados correctamente");
-			//window.history.go(-2);
+			window.location.href = "../form/cursos.html?id1=" + idUsuario;
 		} else {
 			alert("No se a seleccionado archivos");
 		}
 	} catch (error) {
 		alert(error);
 	}
-
-	mosDat(idUsuario);
 }
 
 function reset() {
@@ -134,38 +136,3 @@ function uploadFiles(files) {
 }
 
 
-function mosDat(idUsuario) {
-	$.ajax({
-		url: "../clases/usuario.php?idUsuario="+ idUsuario,
-		type: 'GET',
-		beforeSend: function () {
-			$("#response").html(
-				'<div class="spinner-grow text-primary" role="status">\n' +
-				'  <span class="sr-only">Loidading...</span>\n' +
-				"</div>"
-			);
-		},
-		success: function (response) {
-			const message = response;
-			console.log(message);
-
-			if (message.msgtype == 1) {
-				const data = message.msgdisplay;
-
-				let $nav = $("<nav class=\"navbar navbar-light rgba-stylish-light\"></nav>");
-				$nav.append("<a class='navbar-brand'></a>")
-				data.forEach(element => {
-					let h5 = $("<a>").append(
-						$('<a>').html("<h5>"+element.Descripcion+" | "+element.Nombre+"</h5>"),
-					);
-					$nav.append(h5);
-				});
-				$(".table-responsive").append($nav);
-			}
-
-		},
-		error: function (request, status, error) {
-			$("#response").html(request.responseText);
-		},
-	});
-}

@@ -30,7 +30,8 @@
 		</style>
 	</head>
 	<body>
-		<div class="table-responsive"></div>
+		<div id="header"></div>
+		<div id="tabla" class="table-responsive"></div>
 		<div>
 			<span class="titles bold">Comparación de proyectos</span>
 			<div class="row col-10">
@@ -41,7 +42,13 @@
 					<select id="sel2" class="form-control"></select>
 				</div>
 				<div class="col-xl-3">
-					<button type="button" class="btn btn-primary">Comparar</button>
+					<button id="btnComparar" type="button" class="btn btn-primary">Comparar</button>
+				</div>
+			</div>
+			<div>
+				<ul class="list-group" id="listing"></ul>
+				<div>
+					<div id="comparation" class="table-responsive"></div>
 				</div>
 			</div>
 		</div>
