@@ -22,9 +22,10 @@ $(document).ready(function (e) {
                 $table.append("<tr><th>Ruta</th" +
                     "</tr>")
                 data.forEach(element => {
+                    let url= '../uploads/'+path+'/'+element.detallecarga;
                     let tr = $("<tr id='trDtTabla'>").append(
                        // $('<td id="datosTabla">').text(element.detallecarga)
-                        $('<td id="datosTabla">').append('<a href="../uploads/'+path+'/'+element.detallecarga+'">'+element.detallecarga+'</a>')
+                        $('<td id="datosTabla">').append('<a href="lectura_archivos.html?id1='+url+'">'+element.detallecarga+'</a>')
                     );
                     $table.append(tr);
                 });

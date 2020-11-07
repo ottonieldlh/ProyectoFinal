@@ -26,7 +26,11 @@ function save() {
 	try {
 		if (files.length > 0) {
 			let id = uploadFiles(files);
-			v;
+			const queryString = window.location.search;
+			const urlParams = new URLSearchParams(queryString);
+			const idUsuario = urlParams.get("id1");
+			const idProyecto = urlParams.get("id2");
+			const Descripcion = document.getElementById("description").value;
 			const Path = id;
 
 			$.ajax({
